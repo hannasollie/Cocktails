@@ -1,11 +1,15 @@
 import React, { Component} from "react";
+import StickyFooter from "./StickyFooter";
 import "./App.css";
 
 class App extends Component{
   render(){
     return(
+      <div>
       <div className="App">
-        <h1> Hello, World! </h1>
+        <p>Hannas cocktails</p>
+      </div>
+      <StickyFooter />
       </div>
     );
   }
