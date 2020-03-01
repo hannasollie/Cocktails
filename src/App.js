@@ -16,6 +16,20 @@ const styles = {
 
 
 class App extends Component{
+
+  state = {
+    cocktails: [],
+  }
+
+  componentDidMount() {
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({ cocktails: data })
+        })
+        .catch(console.log)
+  }
+
   render(){
     return(
       <div>
