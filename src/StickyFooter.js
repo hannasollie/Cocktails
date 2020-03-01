@@ -32,8 +32,7 @@ const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',
-    backgroundColor:
-      theme.palette.type === 'dark' ? theme.palette.grey[800] : theme.palette.grey[200],
+    height: '100px',
   },
 }));
 
@@ -43,10 +42,9 @@ export default function StickyFooter() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <footer className={classes.footer}>
+      <footer className={classes.footer} style={{backgroundColor: 'sienna', opacity: 0.8}}>
         <Container maxWidth="sm">
-          <Typography variant="body1">Laget av Hanna Sollie Storaker</Typography>
-          <Copyright />
+          <Copyright style={{marginTop: '10px'}} />
         </Container>
       </footer>
     </div>
