@@ -19,15 +19,31 @@ class App extends Component{
 
   state = {
     cocktails: [],
+    topDrinks: [],
   }
 
   componentDidMount() {
-        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita')
-        .then(res => res.json())
-        .then((data) => {
-          this.setState({ cocktails: data })
-        })
-        .catch(console.log)
+    this.getCocktailListForAutocomplete();
+    this.get10RandomDrinks();
+
+  }
+
+  get10RandomDrinks = () => {
+    fetch('https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({topDrinks: data.drinks})
+    })
+    .catch(console.log);
+  }
+
+  getCocktailListForAutocomplete = () => {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ cocktails: data.drinks })
+    })
+    .catch(console.log);
   }
 
   render(){
@@ -48,7 +64,7 @@ class App extends Component{
         </div>
         <p style={{textAlign: 'center', fontFamily: 'Aquamarine', fontSize: '30px'}}> - Passion for cocktails - </p>
         <div>
-          <SearchCocktails />
+          <SearchCocktails cocktailList={this.state.cocktails} top10={this.state.topDrinks}/>
         </div>
         <StickyFooter />
       </div>

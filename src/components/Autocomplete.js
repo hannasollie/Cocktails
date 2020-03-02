@@ -20,7 +20,7 @@ const styles = theme => ({
     },
     container: {
         marginLeft: '10px',
-        width: 300,
+        width: 250,
         position: 'relative'
     },
     suggestionsContainerOpen: {
@@ -130,13 +130,13 @@ class Autocomplete extends React.Component {
             : selectedItem === item ? classes.itemSelected : classes.item;
         var itemProps = {
             ...getItemProps({
-                key: item.id,
+                key: item.idDrink,
                 index: props.index,
                 item,
                 style: props.style
             })
         };
-        return <div className={classname} {...itemProps}>{item.name}</div>;
+        return <div className={classname} {...itemProps}>{item.strDrink}</div>;
     }
 
     renderList(items, inputValue, getItemProps, selectedItem, highlightedIndex, classes, height) {
@@ -145,8 +145,8 @@ class Autocomplete extends React.Component {
                 ? items
                 : items.filter(
                     suggestion =>
-                        suggestion.name.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1 ||
-                        suggestion.id.toString().indexOf(inputValue) !== -1
+                        suggestion.strDrink.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1 ||
+                        suggestion.idDrink.toString().indexOf(inputValue) !== -1
                 );
 
         if (list.length === 1) {
@@ -215,7 +215,7 @@ class Autocomplete extends React.Component {
                 onStateChange={this.handleDownshiftStateChange}
                 onOuterClick={this.handleCloseEvent}
                 onChange={this.handleDownshiftChange}
-                itemToString={item => (item ? item.name : '')}
+                itemToString={item => (item ? item.strDrink : '')}
             >
                 {({ getInputProps, getItemProps, isOpen, inputValue, highlightedIndex, selectedItem }) => (
                     <div className={classes.container}>

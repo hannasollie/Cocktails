@@ -6,7 +6,7 @@
 .headerTextLogo {
   margin: 1rem;
   font-family: Abandoned;
-  font-size: 25px;
+  font-size: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
   background-color:lightgrey;
   border-style: solid;
   border-width: 5px;
-  border-color:black;
+  border-color:#1a0d00;
 }
 
 @font-face {
