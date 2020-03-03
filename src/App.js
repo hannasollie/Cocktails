@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import Logo from './images/drinkLogo.png';
 import CocktailHeader from './images/cocktails-header.jpg';
+import Martini from './images/martini.svg'
+
 
 const styles = {
 
@@ -55,7 +57,7 @@ class App extends Component{
               <p>Cocktail recipes</p>
             </div>
             <div>
-              <img className="drink-logo" src={Logo} alt="Logo"/>
+              <img className="drink-logo" src={Martini} alt="Logo"/>
             </div>
           </div>
         </div>

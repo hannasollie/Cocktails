@@ -1,44 +1,68 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import Paper from '@material-ui/core/Paper';
+import styled from 'styled-components';
 
-const useStyles = makeStyles(theme => ({
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    padding: '50px',
-  },
-}));
+//const DrinkButton = styled.button`
+//  fontSize: 12;
+//`;
+
+//const Test = styled(DrinkButton)`
+//  color: white;
+//`;
+const StyledHeader = styled.h3`
+  font-family: Abandoned;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  font-weight: bold;
+`;
+
+const RecipeContainer = styled.div`
+  width: 600px;
+  background-color: white;
+  transition: ${props => (props.open ? 'all 1s ease' : 'none' )};
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  margin-top: 50px;
+
+`;
+
+const StyledIngredient = styled.p`
+  font-family: Roboto;
+  text-align: center;
+`;
+
+const StyledInstructions = styled.p`
+  font-family: Roboto;
+  padding-left: 15px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+`;
+
 
 export default function CocktailRecipe(props) {
-  const classes = useStyles();
+  console.log(props);
 
   return (
     <div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
-        open={props.open}
-        onClose={props.handleClose}
-      >
-        <Fade in={props.open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Recipe for {props.selectedCocktail.strDrink}</h2>
-            <p>{props.selectedCocktail.strIngredient1}</p>
-            <p>{props.selectedCocktail.strIngredient2}</p>
-            <p>{props.selectedCocktail.strIngredient3}</p>
-            <p>{props.selectedCocktail.strIngredient4}</p>
-            <p>{props.selectedCocktail.strIngredient5}</p>
-            <p>{props.selectedCocktail.strIngredient6}</p>
-            <p>{props.selectedCocktail.strIngredient7}</p>
-            <p>{props.selectedCocktail.strIngredient8}</p>
-
-            <p id="transition-modal-description">{props.selectedCocktail.strInstructions}</p>
-          </div>
-        </Fade>
-      </Modal>
+      <RecipeContainer open={props.open}>
+        <div>
+            <StyledHeader>Recipe for {props.selectedCocktail.strDrink}</StyledHeader>
+              <div>
+                <StyledIngredient>{props.selectedCocktail.strIngredient1}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient2}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient3}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient4}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient5}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient6}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient7}</StyledIngredient>
+                <StyledIngredient>{props.selectedCocktail.strIngredient8}</StyledIngredient>
+              </div>
+            <StyledInstructions>{props.selectedCocktail.strInstructions}</StyledInstructions>
+        </div>
+      </RecipeContainer>
     </div>
   );
 }

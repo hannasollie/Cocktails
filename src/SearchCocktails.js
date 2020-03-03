@@ -100,12 +100,12 @@ export class SearchCocktails extends React.Component {
               <Button onClick={this.displayRecipe}>Go!</Button>
             </SearchBar>
         </SearchContainer>
-        <div>
+        <SearchContainer>
         {(this.state.displayRecipe && this.state.selectedCocktail != null) &&
           <CocktailRecipe open={this.state.displayRecipe} handleClose={this.closeRecipe} selectedCocktail={this.state.selectedCocktail}/>
 
         }
-        </div>
+        </SearchContainer>
       </React.Fragment>
     );
   }
