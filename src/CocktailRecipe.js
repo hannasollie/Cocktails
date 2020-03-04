@@ -27,6 +27,11 @@ const RecipeContainer = styled.div`
   border-radius: 6px;
   margin-top: 50px;
 
+  @media (max-width: 600px) {
+    width: 300px;
+    margin-right: 10px;
+  }
+
 `;
 
 const StyledIngredient = styled.p`
@@ -40,16 +45,6 @@ const StyledInstructions = styled.p`
   padding-right: 10px;
   padding-bottom: 20px;
 
-  @media (max-width: 600px) {
-    padding: 0;
-    padding-left: 120px;
-  }
-`;
-
-const InstructionsContainer = styled.div`
-  @media (max-width: 600px) {
-    width: 80%;
-  }
 `;
 
 export default function CocktailRecipe(props) {
@@ -69,9 +64,7 @@ export default function CocktailRecipe(props) {
                 <StyledIngredient>{props.selectedCocktail.strIngredient7}</StyledIngredient>
                 <StyledIngredient>{props.selectedCocktail.strIngredient8}</StyledIngredient>
               </div>
-            <InstructionsContainer>
               <StyledInstructions>{props.selectedCocktail.strInstructions}</StyledInstructions>
-            </InstructionsContainer>
         </div>
       </RecipeContainer>
     </div>
