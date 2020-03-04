@@ -2,20 +2,8 @@ import React, { Component} from "react";
 import StickyFooter from "./StickyFooter";
 import SearchCocktails from "./SearchCocktails";
 import "./App.css";
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
-import Logo from './images/drinkLogo.png';
 import CocktailHeader from './images/cocktails-header.jpg';
 import Martini from './images/martini.svg'
-
-
-const styles = {
-
-};
-
 
 class App extends Component{
 
@@ -27,6 +15,7 @@ class App extends Component{
   componentDidMount() {
     this.getCocktailListForAutocomplete();
     this.get10RandomDrinks();
+    this.getDrinkOfTheDay();
 
   }
 
@@ -44,6 +33,15 @@ class App extends Component{
     .then(res => res.json())
     .then((data) => {
       this.setState({ cocktails: data.drinks })
+    })
+    .catch(console.log);
+  }
+
+  getDrinkOfTheDay = () => {
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ pickOfTheDay: data.drinks[0] })
     })
     .catch(console.log);
   }
@@ -66,9 +64,9 @@ class App extends Component{
         </div>
         <p style={{textAlign: 'center', fontFamily: 'Aquamarine', fontSize: '30px'}}> - Passion for cocktails - </p>
         <div>
-          <SearchCocktails cocktailList={this.state.cocktails} top10={this.state.topDrinks}/>
+          <SearchCocktails cocktailList={this.state.cocktails}/>
         </div>
-        <StickyFooter />
+        <StickyFooter/>
       </div>
     );
   }

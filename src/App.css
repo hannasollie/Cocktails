@@ -4,6 +4,7 @@
 }
 
 .headerTextLogo {
+  margin: 1rem;
   font-family: Abandoned;
   font-size: 33px;
   display: flex;

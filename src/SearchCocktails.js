@@ -103,7 +103,6 @@ export class SearchCocktails extends React.Component {
         <SearchContainer>
         {(this.state.displayRecipe && this.state.selectedCocktail != null) &&
           <CocktailRecipe open={this.state.displayRecipe} handleClose={this.closeRecipe} selectedCocktail={this.state.selectedCocktail}/>
-
         }
         </SearchContainer>
       </React.Fragment>

@@ -43,7 +43,6 @@ const StyledInstructions = styled.p`
 
 
 export default function CocktailRecipe(props) {
-  console.log(props);
 
   return (
     <div>
