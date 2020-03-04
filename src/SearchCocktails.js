@@ -30,39 +30,45 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const SearchBar = styled.div`
   display: flex;
   align-items: flex-end;
   margin-left: 50px;
+
+  @media (max-width: 600px) {
+    margin-left: 0px;
+  }
 `;
 
 const DrinkImg = styled.img`
   width: 250px;
   height: 270px;
   border-radius:50%;
-  /*-webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;*/
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
+  transition: .3s ease-in-out;
   transition: all 0.5s ease;
 
+  @media (max-width: 600px) {
+    width: 140px;
+    height: 150px;
+    margin-bottom: 50px;
+  }
+
   &:hover ${DrinkImg} {
-    -webkit-transform: rotate(-15deg);
-       -moz-transform: rotate(-15deg);
-         -o-transform: rotate(-15deg);
-        -ms-transform: rotate(-15deg);
-            transform: rotate(-15deg);
+    transform: rotate(-15deg);
     opacity: 0.8;
   }
 `;
 
 export class SearchCocktails extends React.Component {
   state = {
-    selectedCocktail: null,
+    selectedCocktail: '',
     displayRecipe: false,
   }
 
@@ -101,7 +107,7 @@ export class SearchCocktails extends React.Component {
             </SearchBar>
         </SearchContainer>
         <SearchContainer>
-        {(this.state.displayRecipe && this.state.selectedCocktail != null) &&
+        {(this.state.displayRecipe && this.state.selectedCocktail) &&
           <CocktailRecipe open={this.state.displayRecipe} handleClose={this.closeRecipe} selectedCocktail={this.state.selectedCocktail}/>
         }
         </SearchContainer>

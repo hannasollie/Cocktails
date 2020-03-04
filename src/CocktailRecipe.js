@@ -39,8 +39,18 @@ const StyledInstructions = styled.p`
   padding-left: 15px;
   padding-right: 10px;
   padding-bottom: 20px;
+
+  @media (max-width: 600px) {
+    padding: 0;
+    padding-left: 120px;
+  }
 `;
 
+const InstructionsContainer = styled.div`
+  @media (max-width: 600px) {
+    width: 80%;
+  }
+`;
 
 export default function CocktailRecipe(props) {
 
@@ -59,7 +69,9 @@ export default function CocktailRecipe(props) {
                 <StyledIngredient>{props.selectedCocktail.strIngredient7}</StyledIngredient>
                 <StyledIngredient>{props.selectedCocktail.strIngredient8}</StyledIngredient>
               </div>
-            <StyledInstructions>{props.selectedCocktail.strInstructions}</StyledInstructions>
+            <InstructionsContainer>
+              <StyledInstructions>{props.selectedCocktail.strInstructions}</StyledInstructions>
+            </InstructionsContainer>
         </div>
       </RecipeContainer>
     </div>
