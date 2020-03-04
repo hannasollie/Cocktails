@@ -23,14 +23,11 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     minHeight: '100vh',
   },
-  main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
-  },
   footer: {
     padding: theme.spacing(3, 2),
     marginTop: 'auto',
     height: '150px',
+    backgroundColor: 'sienna'
   },
 }));
 
@@ -40,9 +37,9 @@ export default function StickyFooter(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <footer className={classes.footer} style={{backgroundColor: 'sienna'}}>
+      <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Copyright style={{marginTop: '50px'}} />
+          <Copyright/>
         </Container>
       </footer>
     </div>
