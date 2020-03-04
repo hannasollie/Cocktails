@@ -55,8 +55,8 @@ const DrinkImg = styled.img`
   transition: all 0.5s ease;
 
   @media (max-width: 600px) {
-    width: 140px;
-    height: 150px;
+    width: 160px;
+    height: 170px;
     margin-bottom: 50px;
   }
 
