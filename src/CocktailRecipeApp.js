@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component, useCallback } from "react";
 import StickyFooter from "./StickyFooter";
 import SearchCocktails from "./SearchCocktails";
 import "./App.css";
@@ -9,16 +9,14 @@ class App extends Component{
 
   state = {
     cocktails: [],
-    topDrinks: [],
+    randomDrink: null,
   }
 
   componentDidMount() {
     this.getCocktailListForAutocomplete();
-    this.get10RandomDrinks();
-    this.getDrinkOfTheDay();
-
   }
-
+  
+  /* NOT USED
   get10RandomDrinks = () => {
     fetch('https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php')
     .then(res => res.json())
@@ -26,7 +24,7 @@ class App extends Component{
       this.setState({topDrinks: data.drinks})
     })
     .catch(console.log);
-  }
+  }*/
 
   getCocktailListForAutocomplete = () => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini')
@@ -37,14 +35,16 @@ class App extends Component{
     .catch(console.log);
   }
 
-  getDrinkOfTheDay = () => {
+  getRandomDrinkRecipe= () => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php')
     .then(res => res.json())
     .then((data) => {
-      this.setState({ pickOfTheDay: data.drinks[0] })
+      this.setState({ randomDrink: data.drinks[0]})
+      return data.drinks[0]; 
     })
     .catch(console.log);
   }
+
 
   render(){
     return(
@@ -64,7 +64,7 @@ class App extends Component{
         </div>
         <p style={{textAlign: 'center', fontFamily: 'Aquamarine', fontSize: '30px'}}> - Passion for cocktails - </p>
         <div>
-          <SearchCocktails cocktailList={this.state.cocktails}/>
+          <SearchCocktails cocktailList={this.state.cocktails} getRandomDrink={this.getRandomDrinkRecipe} randomDrink={this.state.randomDrink}/>
         </div>
         <StickyFooter/>
       </div>

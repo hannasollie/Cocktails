@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CocktailImg from './images/cocktail.jpg';
 import Autocomplete from './components/Autocomplete';
 import CocktailRecipe from './CocktailRecipe';
@@ -66,55 +66,51 @@ const DrinkImg = styled.img`
   }
 `;
 
-export class SearchCocktails extends React.Component {
-  state = {
-    selectedCocktail: '',
-    displayRecipe: false,
+export default function SearchCocktails(props) {
+  const [selectedCocktail, setSelectedCocktail] = useState(''); 
+  const [displayRecipe, setDisplayRecipe] = useState(false); 
+
+  const updateCocktail = event => {
+    setSelectedCocktail(event.target.value); 
   }
 
-  updateCocktail = event => {
-    let selectedCocktail = event.target.value;
-    this.setState({ selectedCocktail })
-  }
-
-  displayRecipe = () => {
-    if(this.state.selectedCocktail) {
-      this.setState({ displayRecipe: true });
+  const showCocktailRecipe = () => {
+    if(selectedCocktail) {
+      setDisplayRecipe(true); 
     }
   }
 
-  closeRecipe = () => {
-    this.setState({
-      displayRecipe: false,
-      selectedCocktail: null
-     });
+  const closeRecipe = () => {
+    setSelectedCocktail(null); 
+    setDisplayRecipe(false);
   }
 
+  const getRandomDrinkRecipe = () => {
+    props.getRandomDrink(); 
+    setDisplayRecipe(true);    
+    setSelectedCocktail(props.randomDrink); 
+  }
 
-  render() {
-    const classes = this.props;
-    return (
+  return (
       <React.Fragment>
         <SearchContainer>
-            <DrinkImg src={CocktailImg} alt="Cocktail" aria-label="Drink-image"/>
+            <DrinkImg src={CocktailImg} alt="Cocktail" aria-label="Drink-image" onClick={getRandomDrinkRecipe}/>
             <SearchBar>
               <Autocomplete
-                            items={this.props.cocktailList}
-                            onSelected={value => this.updateCocktail({ target: { value: value ? value : null } })}
+                            items={props.cocktailList}
+                            onSelected={value => updateCocktail({ target: { value: value ? value : null } })}
                             height={300}
                             label="What are you making?"/>
-              <Button onClick={this.displayRecipe}>Go!</Button>
+              <Button onClick={showCocktailRecipe}>Go!</Button>
             </SearchBar>
         </SearchContainer>
         <SearchContainer>
-        {(this.state.displayRecipe && this.state.selectedCocktail) &&
-          <CocktailRecipe open={this.state.displayRecipe} handleClose={this.closeRecipe} selectedCocktail={this.state.selectedCocktail}/>
+        {(displayRecipe && selectedCocktail) &&
+          <CocktailRecipe open={displayRecipe} handleClose={closeRecipe} selectedCocktail={selectedCocktail}/>
         }
         </SearchContainer>
       </React.Fragment>
     );
-  }
-
 }
 
-export default SearchCocktails;
+

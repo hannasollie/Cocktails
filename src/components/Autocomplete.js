@@ -25,14 +25,14 @@ const styles = theme => ({
     },
     suggestionsContainerOpen: {
         position: 'absolute',
-        width: 300,
-        zIndex: 9999,
-        marginTop: theme.spacing()
+        width: 250,
+        marginTop: '5px',
+        zIndeks: 999,
     },
     suggestion: {
         display: 'block',
         width: '100%',
-        padding: 5
+        padding: 0
     },
     suggestionsList: {
         margin: 0,
@@ -46,7 +46,7 @@ const styles = theme => ({
         paddingLeft: 5,
         paddingTop: 5,
         listStyleType: 'none',
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: '#ff6600',
         color: 'white',
         fontWeight: 'bold'
     },
@@ -54,7 +54,7 @@ const styles = theme => ({
         paddingLeft: 5,
         paddingTop: 5,
         listStyleType: 'none',
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: '#ff6600',
         color: 'white',
         fontWeight: 'normal'
     },
@@ -88,22 +88,27 @@ class Autocomplete extends React.Component {
     handleOpenEvent = () => {
         this.setState({ isMenuOpen: true });
     };
+
     handleCloseEvent = () => {
         this.setState({ isMenuOpen: false });
     };
+
     handleDownshiftChange = selection => {
         this.props.onSelected(selection);
         this.setState({ isMenuOpen: false, selectedItem: selection });
     };
+    
     handleDownshiftStateChange = changes => {
         if (changes.isOpen) {
             this.setState({ isMenuOpen: changes.isOpen });
         }
     };
+
     handleClickClear = () => {
         this.props.onSelected(null);
         this.setState({ isMenuOpen: false, selectedItem: null });
     };
+
     handleKeydown(event, highlightedIndex) {
         if (event.key === 'Enter' && this.oneselected != null) {
             this.props.onSelected(this.oneselected);

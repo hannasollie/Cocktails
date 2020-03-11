@@ -21,13 +21,12 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    minHeight: '100vh', /*100vw means 100% of the viewport width. 100% of the height.*/ 
   },
   footer: {
-    padding: theme.spacing(3, 2),
+    padding: theme.spacing(3, 2), /*24px 16px */
     marginTop: 'auto',
     height: '150px',
-    backgroundColor: 'sienna'
   },
 }));
 
