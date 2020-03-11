@@ -1,1 +1,1 @@
-# React-app
+# Cocktail recipe app
