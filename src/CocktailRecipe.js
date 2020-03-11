@@ -15,9 +15,15 @@ import styled from 'styled-components';
 const StyledHeader = styled.h3`
   font-family: Abandoned;
   text-align: center;
-  font-size: 20px;
+  color: black;
+  font-size: 25px;
   padding: 10px;
   font-weight: bold;
+  padding-top: 20px;
+  
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const RecipeContainer = styled.div`
@@ -79,10 +85,11 @@ const Container = styled.div`
 
 const List = styled.ul`
   list-style-type: square;
-  padding: 0px 20px;
+  padding: 0px;
   background-color: transparent;
   border-top: 0.5px solid;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 `;
 
 const ListItem = styled.li`
@@ -96,8 +103,13 @@ const ListItem = styled.li`
 
 const Title = styled.p`
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-top: -5px;
   color: black;
+`;
+
+const Symbol = styled.span`
+  color: #ff6600;
+  margin-right: 5px;
 `;
 
 export default function CocktailRecipe(props) {
@@ -110,7 +122,7 @@ export default function CocktailRecipe(props) {
         <List>
           {sentences.filter(x => x.length > 1).map((item, i) => (
             <ListItem key={i}>
-              <Title>{item}</Title>
+              <Title><Symbol>{'\u2666 '}</Symbol>{item}</Title>
             </ListItem>
           ))}
         </List>

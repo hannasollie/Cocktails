@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container';
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary">
+    <Typography color="textSecondary">
       {'Copyright © '}
         hannasollie
       {new Date().getFullYear()}

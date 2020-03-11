@@ -53,8 +53,10 @@ const DrinkImg = styled.img`
   border-radius:50%;
   transition: .3s ease-in-out;
   transition: all 0.5s ease;
+  cursor: pointer;
+  
 
-  @media (max-width: 600px) {
+  @media (max-width: 600px) { 
     width: 160px;
     height: 170px;
     margin-bottom: 50px;
@@ -86,9 +88,9 @@ export default function SearchCocktails(props) {
   }
 
   const getRandomDrinkRecipe = () => {
-    props.getRandomDrink(); 
+    props.getRandomDrink();
+    setSelectedCocktail(props.randomDrink);    
     setDisplayRecipe(true);    
-    setSelectedCocktail(props.randomDrink); 
   }
 
   return (
@@ -97,10 +99,11 @@ export default function SearchCocktails(props) {
             <DrinkImg src={CocktailImg} alt="Cocktail" aria-label="Drink-image" onClick={getRandomDrinkRecipe}/>
             <SearchBar>
               <Autocomplete
-                            items={props.cocktailList}
-                            onSelected={value => updateCocktail({ target: { value: value ? value : null } })}
-                            height={300}
-                            label="What are you making?"/>
+                  items={props.cocktailList}
+                  onSelected={value => updateCocktail({ target: { value: value ? value : null } })}
+                  height={300}
+                 label="What are you making?"
+              />
               <Button onClick={showCocktailRecipe}>Go!</Button>
             </SearchBar>
         </SearchContainer>

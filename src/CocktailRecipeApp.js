@@ -15,16 +15,6 @@ class App extends Component{
   componentDidMount() {
     this.getCocktailListForAutocomplete();
   }
-  
-  /* NOT USED
-  get10RandomDrinks = () => {
-    fetch('https://www.thecocktaildb.com/api/json/v2/9973533/randomselection.php')
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({topDrinks: data.drinks})
-    })
-    .catch(console.log);
-  }*/
 
   getCocktailListForAutocomplete = () => {
     fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=martini')
